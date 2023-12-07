@@ -1,0 +1,17 @@
+name: 'Docker Login'
+description: 'Login to Docker Hub'
+inputs:
+  username:
+    description: 'Docker Hub username'
+    required: true
+  password:
+    description: 'Docker Hub password'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - sh
+    - -c
+    - |
+      echo "${{ inputs.password }}" | docker login -u "${{ inputs.username }}" --password-stdin
