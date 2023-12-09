@@ -1,5 +1,6 @@
 #!/bin/sh
 
-echo "Logging into Docker Hub with username: $INPUT_USERNAME"
+# Accessing the GitHub actor context variable
+echo "Logging into Docker Hub with username: $INPUT_USERNAME as GitHub user: $GITHUB_ACTOR"
 apt-get update -y && apt-get install docker.io -y
 docker login -u $INPUT_USERNAME -p $INPUT_PASSWORD
