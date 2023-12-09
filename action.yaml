@@ -1,5 +1,7 @@
 name: 'Docker Login Action'
 description: 'A sample Docker login action'
+permission:
+  content: read
 inputs:
   username:
     description: 'Docker Hub username'
