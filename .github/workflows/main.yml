@@ -1,0 +1,17 @@
+name: Hello World Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'User Name'
+        type: string
+        required: true
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Hello World Message
+        run: echo "Hello, ${{ github.event.inputs.name }}!"
