@@ -1,0 +1,13 @@
+name: 'Docker Login Action'
+description: 'A sample Docker login action'
+inputs:
+  username:
+    description: 'Docker Hub username'
+    required: true
+  password:
+    description: 'Docker Hub password'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: '/entrypoint.sh'
