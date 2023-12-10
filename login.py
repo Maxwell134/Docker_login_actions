@@ -8,7 +8,7 @@ def docker_login(username, password):
 
 def build_and_push_image(image_name, image_tag):
     build_cmd = f'docker build -t {image_name}:{image_tag} .'
-    build_tag = f'docker tag { image_name }:{ image_tag } { username }/{ image_name }:{ image_tag }
+    build_tag = f'docker tag { image_name }:{ image_tag } { username }/{ image_name }:{ image_tag }'
 
     push_cmd = f'docker push {username}/{image_name}:{image_tag}'
 
