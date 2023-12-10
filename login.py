@@ -37,7 +37,7 @@ def main():
     image_tag = os.environ.get('image_tag')
     username = os.environ.get('username')
     password = os.environ.get('password')
-    token_id = os.environ.get('token')
+    token = os.environ.get('token')
 
     # Perform Docker login
     docker_login(username, password)
