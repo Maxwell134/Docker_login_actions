@@ -1,0 +1,36 @@
+name: Docker Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Docker image name'
+        required: true
+      image_tag:
+        description: 'Docker image tag'
+        required: true
+      registry_url:
+        description: 'Docker registry URL'
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Run Python Script
+        run: python login.py
+        env:
+          image: ${{ github.event.inputs.image }}
+          image_tag: ${{ github.event.inputs.image_tag }}
+          registry_url: ${{ github.event.inputs.registry_url }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
