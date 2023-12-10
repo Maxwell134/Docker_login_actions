@@ -2,6 +2,7 @@ import os
 import subprocess
 import json
 import requests
+
 def docker_login(username, password):
     login_cmd = f'docker login -u {username} -p {password}'
     subprocess.run(login_cmd, shell=True, check=True)
