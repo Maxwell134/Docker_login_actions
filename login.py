@@ -15,7 +15,17 @@ def build_and_push_image(image_name, image_tag, username):
     subprocess.run(build_cmd, shell=True, check=True)
     subprocess.run(build_tag, shell=True, check=True)
     subprocess.run(push_cmd, shell=True, check=True)
-    
+
+def image_exists(username, image_name, image_tag, registry_url):
+    api_url = f'{registry_url}/v2/{username}/{image_name}/manifests/{image_tag}'
+    response = requests.head(api_url)
+    return response.status_code == 200
+
+def delete_image(username, image_name, image_tag, registry_url):
+    api_url = f'{registry_url}/v2/{username}/{image_name}/manifests/{image_tag}'
+    headers = {"Accept": "application/vnd.docker.distribution.manifest.v2+json"}
+    response = requests.delete(api_url, headers=headers)
+    return response.status_code == 202
     
 
 def main():
@@ -28,6 +38,12 @@ def main():
 
     # Perform Docker login
     docker_login(username, password)
+
+    if image_exists(username, image_name, image_tag, registry_url):
+        print(f"Image with tag {image_tag} exists. Deleting...")
+        # Delete the existing image
+        delete_image(username, image_name, image_tag, registry_url)
+
 
     # Build and push Docker image
     build_and_push_image(image_name, image_tag, username)
