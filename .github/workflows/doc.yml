@@ -28,7 +28,7 @@ jobs:
 
 
       - name: Run Python Script
-        run: python login.py
+        run: python3 login.py
         env:
           image: ${{ github.event.inputs.image }}
           image_tag: ${{ github.event.inputs.image_tag }}
