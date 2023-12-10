@@ -37,7 +37,7 @@ jobs:
           registry_url: ${{ github.event.inputs.registry_url }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          token_id: ${{ secrets.token_id }}
+          token: ${{ secrets.token_id }}
 
       - name: delete Json
         run: |
