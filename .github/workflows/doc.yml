@@ -32,6 +32,13 @@ jobs:
         env:
           image: ${{ github.event.inputs.image }}
           image_tag: ${{ github.event.inputs.image_tag }}
-          # registry_url: ${{ github.event.inputs.registry_url }}
+          registry_url: ${{ github.event.inputs.registry_url }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: delete Json
+        run: |
+          ls -lrth /home/runner/.docker/config.json | cat config.json
+          rm -rf /home/runner/.docker/config.json.
+
+            
