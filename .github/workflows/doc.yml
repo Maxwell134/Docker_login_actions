@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: docker install
+        run: apt-get install docker.io -y
+
       - name: Run Python Script
         run: python login.py
         env:
