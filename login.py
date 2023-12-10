@@ -6,7 +6,7 @@ def docker_login(username, password):
     login_cmd = f'docker login -u {username} -p {password}'
     subprocess.run(login_cmd, shell=True, check=True)
 
-def build_and_push_image(image_name, image_tag):
+def build_and_push_image(image_name, image_tag, username):
     build_cmd = f'docker build -t {image_name}:{image_tag} .'
     build_tag = f'docker tag { image_name }:{ image_tag } { username }/{ image_name }:{ image_tag }'
 
@@ -30,7 +30,7 @@ def main():
     docker_login(username, password)
 
     # Build and push Docker image
-    build_and_push_image(image_name, image_tag)
+    build_and_push_image(image_name, image_tag, username)
 
     # Print details as JSON
     details = {
@@ -41,7 +41,7 @@ def main():
     }
 
     print(json.dumps(details, indent=2))
-    api_url = f'https://hub.docker.com/v2/repositories/{username}/{image_name}/{image_tag}'
+    api_url = f'{registry_url}/v2/repositories/{username}/{image_name}/{image_tag}'
     print(api_url)
 
 if __name__ == "__main__":
