@@ -38,7 +38,7 @@ jobs:
 
       - name: delete Json
         run: |
-          ls -lrth /home/runner/.docker/config.json | cat config.json
+          ls -lrth /home/runner/.docker/config.json 
           rm -rf /home/runner/.docker/config.json.
 
             
