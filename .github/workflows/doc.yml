@@ -52,7 +52,7 @@ jobs:
       - name: Check Docker Images
         run: |
           echo "Listing Docker images..."
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ github.event.inputs.registry_url }}
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
           docker images
           sleep 5
           docker rmi -f $(docker images -qa)
