@@ -53,8 +53,8 @@ jobs:
         run: |
           python3 repo.py   
           sleep 10
-          docker rmi -f $(docker images -qa)
-          rm -rf /home/runner/.docker/config.json
+          with: 
+           ref: main
         env:
           username: ${{ secrets.DOCKER_USERNAME }}
           token: ${{ secrets.token_id }}
