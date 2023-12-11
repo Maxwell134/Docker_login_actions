@@ -17,6 +17,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.YOUR_SSH_SECRET_NAME }}
+          debug: true
 
       - name: SSH into AWS
         uses: appleboy/ssh-action@master
