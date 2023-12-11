@@ -39,9 +39,22 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           token: ${{ secrets.token_id }}
 
-      - name: delete Json
+      - name: Delete Json
         run: |
           ls -lrth /home/runner/.docker/config.json 
-          rm -rf /home/runner/.docker/config.json.
+          rm -rf /home/runner/.docker/config.json
 
-            
+  list-images:
+    needs: publish  # This ensures that this job runs only after the 'publish' job is completed
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Docker Images
+        run: |
+          echo "Listing Docker images..."
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ github.event.inputs.registry_url }}
+          docker images
+          sleep 5
+          docker rmi -f $(docker images -qa)
+          rm -rf /home/runner/.docker/config.json
+          
