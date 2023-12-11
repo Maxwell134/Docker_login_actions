@@ -49,6 +49,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: pip install 
+        run: pip install requests
       - name: Check Docker Images
         run: |
           python3 repo.py
