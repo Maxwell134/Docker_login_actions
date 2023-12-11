@@ -45,20 +45,14 @@ jobs:
           rm -rf /home/runner/.docker/config.json
 
   list-images:
-    needs: publish  # This ensures that this job runs only after the 'publish' job is completed
+    needs: publish
     runs-on: ubuntu-latest
 
     steps:
       - name: Check Docker Images
         run: |
-          python3 repo.py   
+          python3 repo.py
           sleep 10
-          with: 
-           ref: main
         env:
           username: ${{ secrets.DOCKER_USERNAME }}
           token: ${{ secrets.token_id }}
-          
-          
-          
-          
