@@ -51,10 +51,14 @@ jobs:
     steps:
       - name: Check Docker Images
         run: |
-          echo "Listing Docker images..."
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
-          docker images
-          sleep 5
+          python3 repo.py   
+          sleep 10
           docker rmi -f $(docker images -qa)
           rm -rf /home/runner/.docker/config.json
+        env:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          token: ${{ secrets.token_id }}
+          
+          
+          
           
