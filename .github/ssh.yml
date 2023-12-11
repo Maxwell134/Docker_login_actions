@@ -1,0 +1,30 @@
+name: SSH into AWS
+
+on:
+  workflow_dispatch
+
+jobs:
+  ssh-into-aws:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.YOUR_SSH_SECRET_NAME }}
+
+      - name: SSH into AWS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.YOUR_SSH_SECRET_NAME }}
+          port: ${{ secrets.AWS_SSH_PORT }}
+          script: |
+            # Add your SSH commands here
+            ls -lrth
+            df -h 
+            # Example: ssh commands to interact with your AWS instance
