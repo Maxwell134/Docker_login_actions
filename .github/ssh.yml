@@ -1,7 +1,9 @@
 name: SSH into AWS
 
 on:
-  workflow_dispatch
+  push:
+    branches:
+      - main
 
 jobs:
   ssh-into-aws:
@@ -9,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.0
@@ -26,5 +28,5 @@ jobs:
           script: |
             # Add your SSH commands here
             ls -lrth
-            df -h 
+            df -h
             # Example: ssh commands to interact with your AWS instance
