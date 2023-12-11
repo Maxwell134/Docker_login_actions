@@ -1,0 +1,9 @@
+name: 'Test my name'
+
+description: 'This is testing'
+
+inputs:
+  name:
+  description: ''
+  required: true
+  type: string
