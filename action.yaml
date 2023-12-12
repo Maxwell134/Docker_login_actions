@@ -1,15 +1,13 @@
-name: 'Docker Login Action'
-description: 'A sample Docker login action'
-permission:
-  content: read
+name: 'Simple Hello Action'
+description: 'Prints a greeting with a customizable name'
+
 inputs:
-  username:
-    description: 'Docker Hub username'
+  myName:
+    description: 'The name for the greeting'
     required: true
-  password:
-    description: 'Docker Hub password'
-    required: true
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  entrypoint: '/entrypoint.sh'
+
+runs-on: ubuntu-latest
+
+steps:
+  - name: Run Simple Hello Action
+    run: echo "Hello, ${{ inputs.myName }}"
