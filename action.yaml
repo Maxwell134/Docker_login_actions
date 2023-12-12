@@ -1,23 +1,14 @@
-# action.yaml
-name: 'Install Python'
-description: 'Install a specific version of Python'
-inputs:
-  python-version:
-    description: 'Version of Python to install'
-    required: true
+# .github/actions/install-python-3.12/action.yml
+name: 'Install Python 3.12'
+description: 'Install Python 3.12'
+
 runs:
   using: 'composite'
   steps:
-    - name: 'Checkout repository'
-      uses: actions/checkout@v3
-
-    - name: 'Set up Python'
+    - name: 'Set up Python 3.12'
       run: |
-        chmod +x script.sh
-        ./script.sh ${{ inputs.python-version }}
-      shell: bash
+        sudo apt-get update
+        sudo apt-get install -y python3.12
 
-    - name: 'Run Python Script'
-      run: |
-        python3 repo.py
-      shell: bash
+  - name: 'Show Python Version'
+    run: python3.12 --version
