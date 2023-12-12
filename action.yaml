@@ -10,4 +10,4 @@ runs-on: ubuntu-latest
 
 steps:
   - name: Run Simple Hello Action
-    run: echo "Hello, ${{ inputs.myName }}"
+    run: echo "Hello"
