@@ -9,6 +9,7 @@ runs:
   using: 'composite'
   steps:
     - name: 'Set up Python'
-      run: chmod +x install-python.sh
-      run: ./install-python.sh ${{ inputs.python-version }}
+      run: |
+        chmod +x install-python.sh
+        ./install-python.sh ${{ inputs.python-version }}
       shell: bash
