@@ -1,23 +1,18 @@
 name: 'Docker Login'
 description: 'Logs in to a Docker registry'
-# runs:
-#   using: 'docker'
-#   image: 'Dockerfile'
 inputs:
+  registry:
+    description: 'Docker registry URL'
+    required: true
   username:
     description: 'Docker registry username'
     required: true
   password:
     description: 'Docker registry password'
     required: true
-  registry:
-    description: 'Docker registry URL'
-    required: true
-
 runs:
   using: 'composite'
   steps:
     - name: Set up Docker CLI
-      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin ${{ inputs.registry }}
-
-    
+      run: |
+        echo "${{ inputs.password }}" | docker login -u ${{ inputs.username }} --password-stdin ${{ inputs.registry }}
