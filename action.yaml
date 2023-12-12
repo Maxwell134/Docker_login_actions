@@ -6,6 +6,8 @@ inputs:
     description: 'Version of Python to install'
     required: true
 runs:
-  using: 'bash'
-  shell: 'bash'
-  main: './install-python.sh'
+  using: 'composite'
+  steps:
+    - name: 'Set up Python'
+      run: ./install-python.sh
+      shell: bash
