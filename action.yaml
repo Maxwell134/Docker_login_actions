@@ -1,15 +1,19 @@
-# action.yml
-name: 'Install Python'
-description: 'Install a specific version of Python'
-inputs:
-  python-version:
-    description: 'Version of Python to install'
-    required: true
-runs:
-  using: 'composite'
-  steps:
-    - name: 'Set up Python'
-      run: |
-        chmod +x install-python.sh
-        ./install-python.sh ${{ inputs.python-version }}
-      shell: bash
+# .github/workflows/main.yml
+name: Use Custom Install Python Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-python-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        run: |
+          chmod +x Maxwell134/Docker_login_actions/install-python.sh
+          Maxwell134/Docker_login_actions/install-python.sh '3.8'
