@@ -1,13 +1,21 @@
-name: 'Simple Hello Action'
-description: 'Prints a greeting with a customizable name'
+name: Hello, World!
+description: Greet someone and record the time
+author: GitHub Actions
 
+# Define your inputs here.
 inputs:
-  myName:
-    description: 'The name for the greeting'
+  who-to-greet:
+    description: Who to greet
     required: true
+    default: World
 
-runs-on: ubuntu-latest
+# Define your outputs here.
+outputs:
+  time:
+    description: The time we greeted you
 
-steps:
-  - name: Run Simple Hello Action
-    run: echo "Hello, ${{ inputs.myName }}"
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
