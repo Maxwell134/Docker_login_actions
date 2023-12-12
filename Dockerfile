@@ -1,7 +1,8 @@
-FROM ubuntu:latest
+# Use the official Nginx base image
+FROM nginx:latest
 
-COPY entrypoint.sh /entrypoint.sh
-RUN  sudo apt update -y 
-RUN chmod +x /entrypoint.sh
+# Copy a simple "Hello, World!" HTML file to the default Nginx web root
+COPY index.html /usr/share/nginx/html/
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Expose port 80
+EXPOSE 80
