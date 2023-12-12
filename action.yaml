@@ -14,7 +14,8 @@ runs:
     - name: 'Set up Python'
       run: |
       
-           bash install-python.sh ${{ inputs.python-version }}
+          chmod +x install-python.sh
+        ./install-python.sh ${{ inputs.python-version }}
         # chmod +x Maxwell134/Docker_login_actions/install-python.sh
         # Maxwell134/Docker_login_actions/install-python.sh ${{ inputs.python-version }}
       shell: bash
