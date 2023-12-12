@@ -1,4 +1,4 @@
-# action.yml
+# action.yaml
 name: 'Install Python'
 description: 'Install a specific version of Python'
 inputs:
@@ -17,5 +17,7 @@ runs:
         ./script.sh ${{ inputs.python-version }}
       shell: bash
 
-    - name: 'Run'
-      run: python3 repo.py
+    - name: 'Run Python Script'
+      run: |
+        python3 repo.py
+      shell: bash
