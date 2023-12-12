@@ -17,5 +17,5 @@ runs:
         ./script.sh ${{ inputs.python-version }}
       shell: bash
 
-    - name: 'Run Python Script'
+    - name: 'Run'
       run: python3 repo.py
