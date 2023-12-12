@@ -12,7 +12,7 @@ runs:
   using: 'docker'
   image: 'alpine:latest'
   entrypoint: '/bin/sh'
-  script: |
+  run: |
     echo "Hello, ${{ inputs.myName }}"
 
 # steps:
