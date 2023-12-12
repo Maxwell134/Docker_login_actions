@@ -13,6 +13,7 @@ runs:
 
     - name: 'Set up Python'
       run: |
-        chmod +x Maxwell134/Docker_login_actions/install-python.sh
-        Maxwell134/Docker_login_actions/install-python.sh ${{ inputs.python-version }}
+            entrypoint.sh
+        # chmod +x Maxwell134/Docker_login_actions/install-python.sh
+        # Maxwell134/Docker_login_actions/install-python.sh ${{ inputs.python-version }}
       shell: bash
