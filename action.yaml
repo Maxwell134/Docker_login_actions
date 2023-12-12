@@ -9,4 +9,6 @@ runs:
   using: 'composite'
   steps:
     - name: 'Set up Python'
-       entrypoint: ./install-python.sh ${{ inputs.python-version }}
+       run: |
+             apt-get update -y && apt-get install python3.9 -y
+             python3 --version
