@@ -14,5 +14,6 @@ runs:
     - name: 'Set up Python'
       run: |
         chmod +x script.sh
-        ./script.sh ${{ inputs.python-version }}
+        ./script.sh 
+        echo "python3 --version"
       shell: bash
