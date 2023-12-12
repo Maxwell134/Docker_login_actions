@@ -12,5 +12,9 @@ runs:
       uses: actions/checkout@v3
 
     - name: 'Set up Python'
-      run: python3 repo.py         
-      shell: bash
+      run: |
+        chmod +x script.sh
+        ./script.sh ${{ inputs.python-version }}
+
+    - name: 'Run Python Script'
+      run: python3 repo.py
