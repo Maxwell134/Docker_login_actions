@@ -5,10 +5,8 @@ description: 'Install Python 3.12'
 runs:
   using: 'composite'
   steps:
-    - name: 'Set up Python 3.12'
+    - name: 'Set up Python'
       run: |
         sudo apt-get update
         sudo apt-get install -y python3.12
-
-  - name: 'Show Python Version'
-    run: python3.12 --version
+      shell: bash
