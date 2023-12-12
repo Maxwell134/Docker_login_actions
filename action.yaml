@@ -1,21 +1,11 @@
-name: Hello, World!
-description: Greet someone and record the time
-author: GitHub Actions
-
-# Define your inputs here.
+# action.yml
+name: 'Install Python'
+description: 'Install a specific version of Python'
 inputs:
-  who-to-greet:
-    description: Who to greet
+  python-version:
+    description: 'Version of Python to install'
     required: true
-    default: World
-
-# Define your outputs here.
-outputs:
-  time:
-    description: The time we greeted you
-
 runs:
-  using: docker
-  image: Dockerfile
-  env:
-    INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
+  using: 'bash'
+  shell: 'bash'
+  main: './install-python.sh'
