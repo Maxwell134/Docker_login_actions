@@ -1,0 +1,15 @@
+name: 'Docker Login'
+description: 'Logs in to a Docker registry'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  username:
+    description: 'Docker registry username'
+    required: true
+  password:
+    description: 'Docker registry password'
+    required: true
+  registry:
+    description: 'Docker registry URL'
+    required: true
