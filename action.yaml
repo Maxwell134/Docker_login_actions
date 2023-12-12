@@ -11,10 +11,9 @@ runs-on: ubuntu-latest
 runs:
   using: 'docker'
   image: 'alpine:latest'
-  entrypoint: '/bin/sh'
-  run: |
-    echo "Hello, ${{ inputs.myName }}"
+  
+    
 
-# steps:
-#   - name: Run Simple Hello Action
-#     run: echo "Hello"
+steps:
+  - name: Run Simple Hello Action
+    run: echo "Hello, ${{ inputs.myName }}"
