@@ -10,4 +10,6 @@ runs:
   steps:
     - name: 'Set up Python'
       run: ./install-python.sh ${{ inputs.python-version }}
+      with:
+        ref: main
       shell: bash
