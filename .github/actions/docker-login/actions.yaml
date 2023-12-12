@@ -1,17 +1,13 @@
-name: 'Docker Login'
-description: 'Login to Docker Hub'
+name: 'Simple Hello Action'
+description: 'Prints a greeting with a customizable name'
+
 inputs:
-  username:
-    description: 'Docker Hub username'
+  myName:
+    description: 'The name for the greeting'
     required: true
-  password:
-    description: 'Docker Hub password'
-    required: true
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - sh
-    - -c
-    - |
-      echo "${{ inputs.password }}" | docker login -u "${{ inputs.username }}" --password-stdin
+
+runs-on: ubuntu-latest
+
+steps:
+  - name: Run Simple Hello Action
+    run: echo "Hello, ${{ inputs.myName }}"
